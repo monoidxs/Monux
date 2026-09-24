@@ -1,3 +1,4 @@
+pub mod commands;
 mod network;
 use mono_core::{NetworkStatus, Platform, Result, SystemStatus, capabilities::PackageName};
 use std::{fs, process::Command};

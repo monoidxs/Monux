@@ -4,7 +4,7 @@ version = 4
 
 [[package]]
 name = "mono-cli"
-version = "0.1.0"
+version = "0.2.1"
 dependencies = [
  "mono-core",
  "mono-platform-arch",
@@ -12,11 +12,11 @@ dependencies = [
 
 [[package]]
 name = "mono-core"
-version = "0.1.0"
+version = "0.2.1"
 
 [[package]]
 name = "mono-platform-arch"
-version = "0.1.0"
+version = "0.2.1"
 dependencies = [
  "mono-core",
 ]

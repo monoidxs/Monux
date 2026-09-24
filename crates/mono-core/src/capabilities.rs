@@ -56,7 +56,7 @@ pub fn network_check(
     platform.network_check(host, port)
 }
 
-fn validate_host(host: &str) -> Result<()> {
+pub fn validate_host(host: &str) -> Result<()> {
     if host.parse::<std::net::IpAddr>().is_ok() {
         return Ok(());
     }

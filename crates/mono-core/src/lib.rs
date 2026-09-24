@@ -1,4 +1,6 @@
 pub mod capabilities;
+pub mod catalog;
+pub mod command;
 
 pub type Result<T> = std::result::Result<T, String>;
 
