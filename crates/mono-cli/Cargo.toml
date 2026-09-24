@@ -1,0 +1,12 @@
+[package]
+name = "mono-cli"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "mono"
+path = "src/main.rs"
+
+[dependencies]
+mono-core = { path = "../mono-core" }
+mono-platform-arch = { path = "../mono-platform-arch" }

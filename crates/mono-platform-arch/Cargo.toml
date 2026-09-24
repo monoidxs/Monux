@@ -1,0 +1,7 @@
+[package]
+name = "mono-platform-arch"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mono-core = { path = "../mono-core" }
