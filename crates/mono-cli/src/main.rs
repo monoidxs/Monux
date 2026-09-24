@@ -1,3 +1,4 @@
+mod diagnostics;
 mod runner;
 use mono_core::{Result, capabilities};
 use mono_platform_arch::Arch;
@@ -10,6 +11,8 @@ fn run(args: &[String]) -> Result<()> {
         ["manual"] => help(None, true)?,
         ["manual", command] => help(Some(command), true)?,
         ["manual", "backend", command] => backend_manual(command)?,
+        ["diagnose"] => diagnostics::run("system", false)?,
+        ["diagnose", section] => diagnostics::run(section, false)?,
         ["version"] => println!("Mono / Monux {}", env!("CARGO_PKG_VERSION")),
         ["status"] => {
             let s = capabilities::status(&Arch)?;
@@ -57,6 +60,8 @@ fn main() -> std::process::ExitCode {
     let result = if dry_run {
         let borrowed: Vec<&str> = args.iter().map(String::as_str).collect();
         match borrowed.as_slice() {
+            ["diagnose"] => diagnostics::run("system", true),
+            ["diagnose", section] => diagnostics::run(section, true),
             []
             | ["help" | "manual" | "version" | "status"]
             | ["help" | "manual", _]

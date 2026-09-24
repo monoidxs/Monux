@@ -129,3 +129,26 @@ python3 tests/help_delete.py
 ```
 Они создают файлы в target и отдельную тестовую корзину, проверяют подтверждение,
 отмену, параметры, симлинки и отказ недоступной корзины. Пользовательская корзина не используется.
+
+## Mono Diagnostics
+
+```bash
+mono diagnose
+mono diagnose system
+mono diagnose memory
+mono diagnose network
+mono diagnose services
+mono manual diagnose
+```
+
+12 разделов: System, CPU, Memory, Storage, Filesystems, Temperature, Network,
+Services, Boot, Hardware, Power, Logs. Отчёт отделяет проблемы от отсутствующих
+данных. Problems found считает проблемные разделы, которые могут иметь общую причину.
+Код 0 означает, что отчёт построен, а не отсутствие проблем.
+Проверки чтения не выполняют ремонт. Сеть проверяется внешними DNS/TCP-пробами,
+остальные разделы используют локальные данные. `--dry-run` не запускает проверки.
+Нет новых внешних зависимостей Rust. Диагностика — поверхностный health-check,
+не замена проверке целостности ФС, SMART, тесту памяти или аппаратному тестированию.
+
+Проверки: `python3 tests/diagnostics.py`. Пороговые значения и ошибки источников
+дополнительно проверяются модульными тестами `cargo test --workspace --offline`.
